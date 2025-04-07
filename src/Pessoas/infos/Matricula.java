@@ -1,3 +1,5 @@
+package Pessoas.infos;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -43,6 +45,6 @@ public class Matricula {
 
     @Override
     public String toString() {
-        return "Matricula: " + criaMatricula(anoDeEntrada, qtdVagas, posicao);
+        return "Pessoas.informações.Matricula: " + criaMatricula(anoDeEntrada, qtdVagas, posicao);
     }
 }
