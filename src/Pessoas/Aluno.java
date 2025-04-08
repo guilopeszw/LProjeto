@@ -15,6 +15,4 @@ public class Aluno extends Pessoa {
     public Matricula getMatricula() {
         return matricula;
     }
-
-
 }

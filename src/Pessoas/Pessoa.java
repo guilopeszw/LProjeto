@@ -4,7 +4,7 @@ import Pessoas.infos.Telefone;
 
 import java.util.Objects;
 
-public class Pessoa implements PessoaIF{
+public class Pessoa implements PessoaIF {
     private final String nome;
     private Telefone telefone;
     private String email;
@@ -15,26 +15,6 @@ public class Pessoa implements PessoaIF{
         this.telefone = telefone;
         this.email = email;
         this.ativo = ativo;
-    }
-
-    @Override
-    public String nome() {
-        return "";
-    }
-
-    @Override
-    public Telefone telefone() {
-        return null;
-    }
-
-    @Override
-    public String email() {
-        return "";
-    }
-
-    @Override
-    public boolean ativo() {
-        return false;
     }
 
     public String getNome() {
@@ -50,6 +30,11 @@ public class Pessoa implements PessoaIF{
     }
 
     @Override
+    public boolean isAtivo() {
+        return false;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof Pessoa pessoa)) return false;
         return ativo == pessoa.ativo && Objects.equals(nome, pessoa.nome) && Objects.equals(telefone, pessoa.telefone) && Objects.equals(email, pessoa.email);
@@ -58,18 +43,6 @@ public class Pessoa implements PessoaIF{
     @Override
     public int hashCode() {
         return Objects.hash(nome, telefone, email, ativo);
-    }
-
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
     }
 
     @Override

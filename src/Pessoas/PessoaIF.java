@@ -3,8 +3,8 @@ package Pessoas;
 import Pessoas.infos.Telefone;
 
 public interface PessoaIF {
-    String nome();
-    Telefone telefone();
-    String email();
-    boolean ativo();
+    String getNome();
+    Telefone getTelefone();
+    String getEmail();
+    boolean isAtivo();
 }
