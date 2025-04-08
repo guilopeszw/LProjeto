@@ -1,24 +1,24 @@
 import java.util.Objects;
 
 public class Nota {
-    private int nota;
+    private double nota;
 
-    public Nota(int nota) {
+    public Nota(double nota) {
         this.nota = nota;
     }
 
-    public int getNota() {
+    public double getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(double nota) {
         this.nota = nota;
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Nota nota1)) return false;
-        return nota == nota1.nota;
+        return Double.compare(nota, nota1.nota) == 0;
     }
 
     @Override
