@@ -17,6 +17,10 @@ public class Telefone {
         this.numero = numero;
     }
 
+    public String criaTelefone(String numero) {
+        return "+55 " + numero;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Telefone telefone)) return false;

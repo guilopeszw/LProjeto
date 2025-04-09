@@ -4,7 +4,7 @@ import Pessoas.infos.Telefone;
 
 import java.util.Objects;
 
-public class Pessoa implements PessoaIF {
+public abstract class Pessoa implements PessoaIF {
     private final String nome;
     private Telefone telefone;
     private String email;
