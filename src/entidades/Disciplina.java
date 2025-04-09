@@ -8,8 +8,9 @@ public class Disciplina {
     private int codigo;
     private boolean ativo;
 
-    public Disciplina(String nome, int qtdHoras, int codigo) {
+    public Disciplina(String nome,Professor professor, int qtdHoras, int codigo) {
         this.nome = nome;
+        this.professor = professor;
         this.qtdHoras = qtdHoras;
         this.codigo = codigo;
         this.ativo = true;
