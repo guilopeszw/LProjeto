@@ -1,4 +1,4 @@
-package entidades;
+import entidades.Professor;
 
 public class Disciplina {
 
