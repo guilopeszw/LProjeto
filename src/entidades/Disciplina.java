@@ -1,4 +1,4 @@
-package Pessoas;
+package entidades;
 
 public class Disciplina {
     private String nome;
