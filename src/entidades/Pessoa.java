@@ -1,16 +1,14 @@
-package Pessoas;
-
-import Pessoas.infos.Telefone;
+package entidades;
 
 import java.util.Objects;
 
-public abstract class Pessoa implements PessoaIF {
+public abstract class Pessoa {
     private final String nome;
-    private Telefone telefone;
+    private String telefone;
     private String email;
     private boolean ativo;
 
-    public Pessoa(String nome, Telefone telefone, String email, boolean ativo) {
+    public Pessoa(String nome, String telefone, String email, boolean ativo) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -21,17 +19,12 @@ public abstract class Pessoa implements PessoaIF {
         return nome;
     }
 
-    public Telefone getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
     public String getEmail() {
         return email;
-    }
-
-    @Override
-    public boolean isAtivo() {
-        return false;
     }
 
     @Override
