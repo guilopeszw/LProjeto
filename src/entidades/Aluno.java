@@ -5,7 +5,7 @@ public class Aluno extends Pessoa {
 
 
     public Aluno(String nome, String telefone, String email, int matricula, boolean ativo) {
-        super(nome,telefone,email,matricula,true);
+        super(nome, telefone, email, matricula, true);
     }
 
     public void setAtivo(boolean ativo) {
@@ -15,3 +15,4 @@ public class Aluno extends Pessoa {
     public boolean getAtivo() {
         return ativo;
     }
+}
