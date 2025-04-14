@@ -29,6 +29,10 @@ public abstract class Pessoa {
         return email;
     }
 
+    public int getMatricula() {
+        return matricula;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Pessoa pessoa)) return false;
