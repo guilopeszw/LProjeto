@@ -13,7 +13,6 @@ public class Turma {
     private int codigo;
     private Boolean ativo;
 
-    // Construtor completo
     public Turma(Disciplina disciplina, Professor professor, int quantUnidades, int codigo) {
         this.disciplina = disciplina;
         this.professor = professor; // Campo professor corrigido
