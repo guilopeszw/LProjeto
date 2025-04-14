@@ -2,7 +2,7 @@ public class Disciplina {
 
     private String nome;
     private int qtdHoras;
-    private int codigo;
+    private final int codigo;
     private boolean ativo;
 
     public Disciplina(String nome, int qtdHoras, int codigo) {
@@ -30,6 +30,10 @@ public class Disciplina {
 
     public int getCodigoDisciplina() {
         return codigo;
+    }
+
+    public Boolean getAtivoDisciplina() {
+        return ativo;
     }
 
     public void excluirDisciplina() {
