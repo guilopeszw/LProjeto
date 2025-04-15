@@ -6,14 +6,14 @@ public abstract class Pessoa {
     private final String nome;
     private String telefone;
     private String email;
-    private int matricula;
+    private int codigo;
     public boolean ativo;
 
-    public Pessoa(String nome, String telefone, String email,int matricula, boolean ativo) {
+    public Pessoa(String nome, String telefone, String email,int codigo, boolean ativo) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
-        this.matricula = matricula;
+        this.codigo = codigo;
         this.ativo = ativo;
     }
 
@@ -29,8 +29,8 @@ public abstract class Pessoa {
         return email;
     }
 
-    public int getMatricula() {
-        return matricula;
+    public int getCodigo() {
+        return codigo;
     }
 
     @Override

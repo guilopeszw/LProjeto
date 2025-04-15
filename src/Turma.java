@@ -26,7 +26,7 @@ public class Turma {
 
     //Método para matricular aluno usando matrícula (int), Aluno ainda não esta pronto, lembrar de checar a´pos a criação de Aluno
     public void matricularAluno(Aluno aluno) {
-        int matricula = aluno.getMatricula();
+        int matricula = aluno.getCodigo();
         if (alunosMatriculados.containsKey(matricula)) {
             throw new IllegalArgumentException("Matrícula já existe");
         }
