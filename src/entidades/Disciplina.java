@@ -1,16 +1,14 @@
-import entidades.Professor;
+package entidades;
 
 public class Disciplina {
 
     private String nome;
-    private Professor professor;
     private int qtdHoras;
     private int codigo;
     private boolean ativo;
 
-    public Disciplina(String nome,Professor professor, int qtdHoras, int codigo) {
+    public Disciplina(String nome, int qtdHoras, int codigo) {
         this.nome = nome;
-        this.professor = professor;
         this.qtdHoras = qtdHoras;
         this.codigo = codigo;
         this.ativo = true;
@@ -28,7 +26,4 @@ public class Disciplina {
         return codigo;
     }
 
-    public Professor getProfessor() {
-        return professor;
-    }
 }
