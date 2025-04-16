@@ -1,6 +1,8 @@
 package entidades;
 
-public class Disciplina {
+import java.io.Serializable;
+
+public class Disciplina implements Serializable {
 
     private String nome;
     private int qtdHoras;

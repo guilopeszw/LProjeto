@@ -1,11 +1,13 @@
 package coleções;
 
 import entidades.Turma;
+
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-public class ColecaoDeTurmas {
+public class ColecaoDeTurmas implements Serializable{
     private Set<Turma> colecaoDeTurmas = new HashSet<>();
 
     public ColecaoDeTurmas() {}

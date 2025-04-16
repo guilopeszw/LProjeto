@@ -1,9 +1,10 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Turma {
+public class Turma implements Serializable {
     private Disciplina disciplina;
     private Professor professor;
     private Map<Integer, Aluno> alunosMatriculados; // Matrícula como Integer

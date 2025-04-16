@@ -1,9 +1,10 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Professor extends Pessoa {
+public class Professor extends Pessoa implements Serializable {
     private Set<Disciplina> disciplinasMinistradas;
 
     public Professor(String nome, String telefone, String email, int codigo, Set<Disciplina> disciplinasMinistradas) {
