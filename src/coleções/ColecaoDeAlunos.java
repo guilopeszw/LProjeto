@@ -2,10 +2,11 @@ package coleções;
 
 import entidades.Aluno;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ColecaoDeAlunos {
+public class ColecaoDeAlunos implements Serializable {
     Set<Aluno> colecaoDeAlunos = new HashSet<>();
 
     public ColecaoDeAlunos(Set<Aluno> colecaoDeAlunos) {

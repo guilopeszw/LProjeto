@@ -1,8 +1,9 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable {
     private final String nome;
     private String telefone;
     private String email;
