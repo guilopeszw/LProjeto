@@ -1,0 +1,18 @@
+package entidades;
+
+import java.util.Map;
+
+public class MediaUltimaProva implements CalculaMediaIF {
+
+    @Override
+    public double calculaMedia(Map<Integer, Double> notas, int quantUnidades) {
+        if (!notas.containsKey(quantUnidades)) throw new IllegalArgumentException("Última prova não registrada");
+        double ultima = notas.get(quantUnidades);
+        double mediaRestante = notas.entrySet().stream()
+                .filter(e -> e.getKey() != quantUnidades)
+                .mapToDouble(Map.Entry::getValue)
+                .average().orElse(0);
+        return (ultima + mediaRestante) / 2;
+    }
+
+}
