@@ -24,4 +24,8 @@ public class Professor extends Pessoa implements Serializable {
     public void setDisciplinasMinistradas(Set<Disciplina> disciplinasMinistradas) {
         this.disciplinasMinistradas = disciplinasMinistradas;
     }
+
+    public void desligarProfessor() {
+        this.ativo = false;
+    }
 }
