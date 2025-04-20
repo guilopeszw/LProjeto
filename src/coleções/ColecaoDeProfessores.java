@@ -1,9 +1,11 @@
 package coleções;
 
 import entidades.Professor;
+import entidades.Turma;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class ColecaoDeProfessores implements Serializable {
@@ -14,14 +16,34 @@ public class ColecaoDeProfessores implements Serializable {
     }
 
     public void addProfessor(Professor professor) {
+        if (colecaoDeProfessores.stream().anyMatch(p -> p.getCodigo() == professor.getCodigo())) {
+            throw new IllegalArgumentException("Código de professor já existe");
+        }
         colecaoDeProfessores.add(professor);
     }
 
-    public void removeProfessor(Professor professor) {
-        colecaoDeProfessores.remove(professor);
+    public void removeProfessor(int codigoProfessor) {
+        Optional<Professor> professorOptional = colecaoDeProfessores.stream()
+                .filter(p -> p.getCodigo() == codigoProfessor)
+                .findFirst();
+
+        if (professorOptional.isPresent()) {
+            colecaoDeProfessores.remove(professorOptional.get());
+            Professor professor = buscarProfessorPeloCodigo(codigoProfessor);
+            professor.desligarProfessor();
+        } else {
+            throw new IllegalArgumentException("Professor não encontrado");
+        }
     }
 
     public Set<Professor> listarProfessores() {
         return colecaoDeProfessores;
+    }
+
+    public Professor buscarProfessorPeloCodigo(int codigoProfessor) {
+        return colecaoDeProfessores.stream()
+                .filter(p -> p.getCodigo() == codigoProfessor)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado"));
     }
 }

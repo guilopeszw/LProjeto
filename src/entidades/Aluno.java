@@ -17,4 +17,8 @@ public class Aluno extends Pessoa implements Serializable {
     public boolean getAtivo() {
         return ativo;
     }
+
+    public void desligarAluno() {
+        this.ativo = false;
+    }
 }

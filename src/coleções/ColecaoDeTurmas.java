@@ -30,6 +30,8 @@ public class ColecaoDeTurmas implements Serializable{
 
         if (turma.isPresent()) {
             colecaoDeTurmas.remove(turma.get());
+            Turma turmaPorCodigo = buscarTurmaPorCodigo(codigoTurma);
+            turmaPorCodigo.encerrarTurma();
         } else {
             throw new IllegalArgumentException("Turma não encontrada");
         }
