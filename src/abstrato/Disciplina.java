@@ -1,4 +1,4 @@
-package entidades;
+package abstrato;
 
 import java.io.Serializable;
 

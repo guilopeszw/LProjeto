@@ -1,7 +1,6 @@
 package coleções;
 
 import entidades.Professor;
-import entidades.Turma;
 
 import java.io.Serializable;
 import java.util.HashSet;

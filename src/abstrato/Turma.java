@@ -1,4 +1,8 @@
-package entidades;
+package abstrato;
+
+import entidades.Aluno;
+import entidades.Professor;
+import medias.CalculaMediaIF;
 
 import java.io.Serializable;
 import java.util.HashMap;
