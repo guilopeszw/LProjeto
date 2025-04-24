@@ -1,6 +1,6 @@
 package coleções;
 
-import entidades.Turma;
+import abstrato.Turma;
 
 import java.io.Serializable;
 import java.util.HashSet;
