@@ -1,6 +1,8 @@
 package coleções;
 
 import entidades.Professor;
+import exceções.ProfessorExistenteException;
+import exceções.ProfessorNaoEncontradoException;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -16,7 +18,7 @@ public class ColecaoDeProfessores implements Serializable {
 
     public void addProfessor(Professor professor) {
         if (colecaoDeProfessores.stream().anyMatch(p -> p.getCodigo() == professor.getCodigo())) {
-            throw new IllegalArgumentException("Código de professor já existe");
+            throw new ProfessorExistenteException();
         }
         colecaoDeProfessores.add(professor);
     }
@@ -31,7 +33,7 @@ public class ColecaoDeProfessores implements Serializable {
             Professor professor = buscarProfessorPeloCodigo(codigoProfessor);
             professor.desligarProfessor();
         } else {
-            throw new IllegalArgumentException("Professor não encontrado");
+            throw new ProfessorNaoEncontradoException();
         }
     }
 
@@ -43,6 +45,6 @@ public class ColecaoDeProfessores implements Serializable {
         return colecaoDeProfessores.stream()
                 .filter(p -> p.getCodigo() == codigoProfessor)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Professor não encontrado"));
+                .orElseThrow(ProfessorNaoEncontradoException::new);
     }
 }
