@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 //Exceção para aluno não matriculado
 public class AlunoNaoMatriculadoException extends AlunoException {

@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 // Exceção para código de turma duplicado
 public class TurmaCodigoExistenteException extends TurmaException {

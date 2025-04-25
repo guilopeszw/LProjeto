@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 // Exceção para matrícula duplicada
 public class MatriculaExistenteException extends AlunoException {

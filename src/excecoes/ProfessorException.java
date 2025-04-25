@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 // Exceção para operações inválidas com professores
 public class ProfessorException extends SistemaAcademicoException {

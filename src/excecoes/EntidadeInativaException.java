@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 //Exceção para tentativa de utilizar entidades inativas
 public class EntidadeInativaException extends SistemaAcademicoException {

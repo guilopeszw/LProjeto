@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 // Exceção para turmas
 public class TurmaException extends SistemaAcademicoException {

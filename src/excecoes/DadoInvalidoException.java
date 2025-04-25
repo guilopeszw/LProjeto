@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 //Exceção para a inserção de dados inválidos
 public class DadoInvalidoException extends SistemaAcademicoException {

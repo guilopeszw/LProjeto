@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 //Exceção para unidades inválidas
 public class UnidadeInvalidaException extends SistemaAcademicoException {

@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 public class NenhumaNotaRegistradaException extends AlunoException {
     public NenhumaNotaRegistradaException() {

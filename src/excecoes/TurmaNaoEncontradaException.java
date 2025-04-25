@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 //Exceção para turmas não encontradas
 public class TurmaNaoEncontradaException extends TurmaException {

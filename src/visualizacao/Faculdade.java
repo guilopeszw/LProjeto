@@ -1,9 +1,9 @@
-package visualização;
+package visualizacao;
 
 import abstrato.Turma;
-import coleções.ColecaoDeAlunos;
-import coleções.ColecaoDeProfessores;
-import coleções.ColecaoDeTurmas;
+import colecoes.ColecaoDeAlunos;
+import colecoes.ColecaoDeProfessores;
+import colecoes.ColecaoDeTurmas;
 import entidades.Aluno;
 import entidades.Professor;
 

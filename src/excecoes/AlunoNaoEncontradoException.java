@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 // Exceção para aluno não encontrado
 public class AlunoNaoEncontradoException extends AlunoException {
