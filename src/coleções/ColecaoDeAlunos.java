@@ -1,6 +1,7 @@
 package coleções;
 
 import entidades.Aluno;
+import entidades.Professor;
 import exceções.AlunoNaoEncontradoException;
 import exceções.TurmaCodigoExistenteException;
 
