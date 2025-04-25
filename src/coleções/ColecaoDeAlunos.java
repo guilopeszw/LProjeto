@@ -1,7 +1,6 @@
 package coleções;
 
 import entidades.Aluno;
-import entidades.Professor;
 import exceções.AlunoNaoEncontradoException;
 import exceções.TurmaCodigoExistenteException;
 
@@ -12,6 +11,8 @@ import java.util.Set;
 
 public class ColecaoDeAlunos implements Serializable {
     Set<Aluno> colecaoDeAlunos = new HashSet<>();
+
+    public ColecaoDeAlunos() {}
 
     public ColecaoDeAlunos(Set<Aluno> colecaoDeAlunos) {
         this.colecaoDeAlunos = colecaoDeAlunos;

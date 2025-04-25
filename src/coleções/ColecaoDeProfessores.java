@@ -12,6 +12,8 @@ import java.util.Set;
 public class ColecaoDeProfessores implements Serializable {
     Set<Professor> colecaoDeProfessores = new HashSet<>();
 
+    public ColecaoDeProfessores() {}
+
     public ColecaoDeProfessores(Set<Professor> colecaoDeProfessores) {
         this.colecaoDeProfessores = colecaoDeProfessores;
     }
