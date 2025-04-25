@@ -1,9 +1,8 @@
-package coleções;
+package colecoes;
 
 import entidades.Aluno;
-import entidades.Professor;
-import exceções.AlunoNaoEncontradoException;
-import exceções.TurmaCodigoExistenteException;
+import excecoes.AlunoNaoEncontradoException;
+import excecoes.TurmaCodigoExistenteException;
 
 import java.io.Serializable;
 import java.util.HashSet;

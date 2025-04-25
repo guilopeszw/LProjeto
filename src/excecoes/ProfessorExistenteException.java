@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 //Para professores que já existem
 public class ProfessorExistenteException extends ProfessorException {

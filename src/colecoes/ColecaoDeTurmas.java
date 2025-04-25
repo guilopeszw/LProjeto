@@ -1,8 +1,8 @@
-package coleções;
+package colecoes;
 
 import abstrato.Turma;
-import exceções.TurmaCodigoExistenteException;
-import exceções.TurmaNaoEncontradaException;
+import excecoes.TurmaCodigoExistenteException;
+import excecoes.TurmaNaoEncontradaException;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -58,10 +58,5 @@ public class ColecaoDeTurmas implements Serializable{
             }
         }
         return turmasFiltradas;
-    }
-
-    public void encerrarTurma(int codigoTurma) {
-        Turma turma = buscarTurmaPorCodigo(codigoTurma);
-        turma.encerrarTurma();
     }
 }

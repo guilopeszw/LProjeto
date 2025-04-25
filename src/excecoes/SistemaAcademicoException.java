@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 //Exceções do sistema acadêmico
 public class SistemaAcademicoException extends RuntimeException {

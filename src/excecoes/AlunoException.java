@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 // Exceção para operações inválidas com alunos
 public class AlunoException extends SistemaAcademicoException {

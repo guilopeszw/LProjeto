@@ -2,7 +2,7 @@ package abstrato;
 
 import entidades.Aluno;
 import entidades.Professor;
-import exceções.*;
+import excecoes.*;
 import medias.CalculaMediaIF;
 
 import java.io.Serializable;

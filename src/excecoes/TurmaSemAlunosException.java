@@ -1,4 +1,4 @@
-package exceções;
+package excecoes;
 
 //Eceção para turmas sem alunos
 public class TurmaSemAlunosException extends TurmaException{

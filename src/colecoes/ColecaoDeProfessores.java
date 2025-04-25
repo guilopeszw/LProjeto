@@ -1,8 +1,8 @@
-package coleções;
+package colecoes;
 
 import entidades.Professor;
-import exceções.ProfessorExistenteException;
-import exceções.ProfessorNaoEncontradoException;
+import excecoes.ProfessorExistenteException;
+import excecoes.ProfessorNaoEncontradoException;
 
 import java.io.Serializable;
 import java.util.HashSet;
