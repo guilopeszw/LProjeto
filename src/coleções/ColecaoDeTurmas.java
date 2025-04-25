@@ -59,9 +59,4 @@ public class ColecaoDeTurmas implements Serializable{
         }
         return turmasFiltradas;
     }
-
-    public void encerrarTurma(int codigoTurma) {
-        Turma turma = buscarTurmaPorCodigo(codigoTurma);
-        turma.encerrarTurma();
-    }
 }
