@@ -2,6 +2,8 @@ package coleções;
 
 import entidades.Aluno;
 import entidades.Professor;
+import exceções.AlunoNaoEncontradoException;
+import exceções.TurmaCodigoExistenteException;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -17,7 +19,7 @@ public class ColecaoDeAlunos implements Serializable {
 
     public void addAluno(Aluno aluno) {
         if (colecaoDeAlunos.stream().anyMatch(a -> a.getCodigo() == aluno.getCodigo())) {
-            throw new IllegalArgumentException("Código de turma já existe");
+            throw new TurmaCodigoExistenteException();
         }
         colecaoDeAlunos.add(aluno);
     }
@@ -32,7 +34,7 @@ public class ColecaoDeAlunos implements Serializable {
             Aluno aluno = buscaAlunoPeloCodigo(codigoAluno);
             aluno.desligarAluno();
         } else {
-            throw new IllegalArgumentException("Aluno não encontrado");
+            throw new AlunoNaoEncontradoException();
         }
     }
 
@@ -44,6 +46,6 @@ public class ColecaoDeAlunos implements Serializable {
         return colecaoDeAlunos.stream()
                 .filter(a -> a.getCodigo() == codigoAluno)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Aluno não encontrado"));
+                .orElseThrow(AlunoNaoEncontradoException::new);
     }
 }

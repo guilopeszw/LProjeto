@@ -2,6 +2,7 @@ package abstrato;
 
 import entidades.Aluno;
 import entidades.Professor;
+import exceções.*;
 import medias.CalculaMediaIF;
 
 import java.io.Serializable;
@@ -30,7 +31,7 @@ public class Turma implements Serializable {
     public void matricularAluno(Aluno aluno) {
         int matricula = aluno.getCodigo();
         if (alunosMatriculados.containsKey(matricula)) {
-            throw new IllegalArgumentException("Matrícula já existe");
+            throw new MatriculaExistenteException();
         }
         alunosMatriculados.put(matricula, aluno);
         notasPorAluno.put(matricula, new HashMap<>());
@@ -44,12 +45,12 @@ public class Turma implements Serializable {
 
     public Map<Integer, Double> getNotasAluno(int matricula) {
         if (!alunosMatriculados.containsKey(matricula)) {
-            throw new IllegalArgumentException("Aluno não está matriculado nesta turma");
+            throw new AlunoNaoMatriculadoException();
         }
 
         Map<Integer, Double> notas = notasPorAluno.get(matricula);
         if (notas == null || notas.isEmpty()) {
-            throw new IllegalStateException("Nenhuma nota registrada para este aluno");
+            throw new NenhumaNotaRegistradaException();
         }
 
         return new HashMap<>(notas);
@@ -57,10 +58,10 @@ public class Turma implements Serializable {
 
     public double getNotaPorUnidade(int matricula, int unidade) {
         if (unidade < 1 || unidade > quantUnidades) {
-            throw new IllegalArgumentException("Unidade inválida");
+            throw new UnidadeInvalidaException(unidade);
         }
         if (!alunosMatriculados.containsKey(matricula)) {
-            throw new IllegalArgumentException("Aluno não matriculado");
+            throw new AlunoNaoMatriculadoException();
         }
 
         Map<Integer, Double> notas = notasPorAluno.get(matricula);
@@ -78,15 +79,15 @@ public class Turma implements Serializable {
         return notasPorAluno.values().stream()
                 .mapToDouble(notas -> estrategia.calculaMedia(notas, quantUnidades))
                 .average()
-                .orElseThrow(() -> new IllegalArgumentException("Turma sem alunos"));
+                .orElseThrow(TurmaSemAlunosException::new);
     }
 
     private void validarUnidade(int unidade) {
-        if (unidade < 1 || unidade > quantUnidades) throw new IllegalArgumentException("Unidade inválida");
+        if (unidade < 1 || unidade > quantUnidades) throw new UnidadeInvalidaException(unidade);
     }
 
     private void validarNota(double nota) {
-        if (nota < 0 || nota > 10) throw new IllegalArgumentException("Nota inválida");
+        if (nota < 0 || nota > 10) throw new NotaInvalidaException();
     }
 
     public Disciplina getDisciplina() {

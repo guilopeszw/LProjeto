@@ -1,6 +1,8 @@
 package coleções;
 
 import abstrato.Turma;
+import exceções.TurmaCodigoExistenteException;
+import exceções.TurmaNaoEncontradaException;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -18,7 +20,7 @@ public class ColecaoDeTurmas implements Serializable{
 
     public void adicionarTurma(Turma turma) {
         if (colecaoDeTurmas.stream().anyMatch(t -> t.getCodigo() == turma.getCodigo())) {
-            throw new IllegalArgumentException("Código de turma já existe");
+            throw new TurmaCodigoExistenteException();
         }
         colecaoDeTurmas.add(turma);
     }
@@ -33,7 +35,7 @@ public class ColecaoDeTurmas implements Serializable{
             Turma turmaPorCodigo = buscarTurmaPorCodigo(codigoTurma);
             turmaPorCodigo.encerrarTurma();
         } else {
-            throw new IllegalArgumentException("Turma não encontrada");
+            throw new TurmaNaoEncontradaException();
         }
     }
 
@@ -45,7 +47,7 @@ public class ColecaoDeTurmas implements Serializable{
         return colecaoDeTurmas.stream()
                 .filter(t -> t.getCodigo() == codigo)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Turma não encontrada"));
+                .orElseThrow(TurmaNaoEncontradaException::new);
     }
 
     public Set<Turma> filtrarTurmasPorDisciplina(String nomeDisciplina) {
