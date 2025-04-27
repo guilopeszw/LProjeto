@@ -34,6 +34,10 @@ public abstract class Pessoa implements Serializable {
         return codigo;
     }
 
+    public boolean getAtivo() {
+        return ativo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Pessoa pessoa)) return false;
