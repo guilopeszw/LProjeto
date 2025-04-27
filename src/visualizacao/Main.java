@@ -9,6 +9,9 @@ import medias.MediaComum;
 import medias.MediaUltimaProva;
 import medias.RemoveMenorMedia;
 
+import entidades.Aluno;
+import excecoes.DadoInvalidoException;
+
 import java.util.Scanner;
 
 public class Main {
@@ -42,7 +45,8 @@ public class Main {
 
                                     int matricula = faculdade.listarAlunos().size();
 
-                                    Aluno novoAluno = new Aluno(nome, telefone, email, matricula, true);
+                                    Aluno novoAluno = new Aluno(nome, telefone, email, matricula, true);                           
+
                                     faculdade.addAluno(novoAluno);
                                     System.out.println("Aluno adicionado com sucesso!\n");
                                 } catch (Exception e) {
@@ -118,9 +122,11 @@ public class Main {
                                     System.out.println("Email: ");
                                     String email = sc.nextLine();
 
+
                                     int matricula = faculdade.listarProfessores().size();
 
                                     Professor novoProfessor = new Professor(nomeProfessor, telefone, email, matricula);
+                                     
                                     faculdade.addProfessor(novoProfessor);
                                     System.out.println("Professor adicionado com sucesso!\n");
                                 } catch (Exception e) {
@@ -173,7 +179,27 @@ public class Main {
 
                             default:
                                 System.out.println("Opção inválida!\n");
-
+                                sc.nextLine();
+                                System.out.println("Informe o nome: ");
+                                String nome = sc.nextLine();
+                                System.out.println("Informe o telefone: ");
+                                String telefone = sc.nextLine();
+                                System.out.println("Informe o e-mail: ");
+                                String email = sc.nextLine();
+                                try {
+                                    faculdade.addAluno(new Aluno(nome, telefone, email, faculdade.listarAlunos().size(), true));
+                                } catch (DadoInvalidoException e) {
+                                    if (nome.isEmpty()) {
+                                        throw new DadoInvalidoException("nome");
+                                    }
+                                    if (telefone.length() != 11) {
+                                        throw new DadoInvalidoException("telefone");
+                                    }
+                                    if (email.isEmpty() || !email.contains("@gmail.com") || !email.contains("@email.com") ||
+                                            !email.contains("@hotmail.com")) {
+                                        throw new DadoInvalidoException("E-mail");
+                                    }
+                                }
                         }
                     }
 
@@ -394,6 +420,7 @@ public class Main {
     }
 
     private static int getPrimeiraEscolha(Scanner sc) throws Exception {
+      
         String prompt = "1. Aluno; \n2. Professor; \n3. Turma; \n4. Disciplina; \n5. Sair \nInsira o que deseja acessar: \n";
         System.out.println(prompt);
         int primeiraEscolha = sc.nextInt();
