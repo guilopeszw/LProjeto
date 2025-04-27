@@ -215,7 +215,7 @@ public class Main {
                     System.out.println("TURMA \n");
                     int segundaEscolhaTurma = getSegundaEscolhaTurma(sc);
 
-                    while (segundaEscolhaTurma != 8) {
+                    while (segundaEscolhaTurma < 8) {
                         switch (segundaEscolhaTurma) {
                             case 1: // Adicionar Turma
                                 try {
@@ -351,8 +351,7 @@ public class Main {
                                 }
                                 break;
                         }
-                        int escolhaTurma = getSegundaEscolhaTurma(sc);
-                        sc.nextLine();
+                        segundaEscolhaTurma = getSegundaEscolhaTurma(sc);
                     }
                     break;
 
@@ -453,7 +452,6 @@ public class Main {
                 """;
         System.out.println(promptDois);
         int segundaEscolha = sc.nextInt();
-        sc.nextLine();
 
         if (segundaEscolha < 1 || segundaEscolha > 5) {
             throw new Exception("Escolha inválida");
@@ -475,7 +473,6 @@ public class Main {
         """;
         System.out.println(promptTurma);
         int escolha = sc.nextInt();
-        sc.nextLine();
 
         if (escolha < 1 || escolha > 8) {
             throw new Exception("Escolha inválida");
