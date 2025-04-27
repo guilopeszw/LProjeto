@@ -106,6 +106,10 @@ public class Turma implements Serializable {
         return codigo;
     }
 
+    public boolean getAtivo() {
+        return ativo;
+    }
+
     public void encerrarTurma() {
         this.ativo = false;
     }
