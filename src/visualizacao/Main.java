@@ -23,7 +23,7 @@ public class Main {
 
         int primeiraEscolha = getPrimeiraEscolha(sc);
 
-        while (primeiraEscolha < 4) {
+        while (primeiraEscolha < 5) {
             switch(primeiraEscolha) {
                 case 1:
                     System.out.println("ALUNO \n");
@@ -43,9 +43,12 @@ public class Main {
                                     System.out.println("Email:");
                                     String email = sc.nextLine();
 
+                                    System.out.println("Curso:");
+                                    String curso = sc.nextLine();
+
                                     int matricula = faculdade.listarAlunos().size();
 
-                                    Aluno novoAluno = new Aluno(nome, telefone, email, matricula, true);                           
+                                    Aluno novoAluno = new Aluno(nome, telefone, email, curso, matricula, true);
 
                                     faculdade.addAluno(novoAluno);
                                     System.out.println("Aluno adicionado com sucesso!\n");
@@ -71,9 +74,10 @@ public class Main {
                                 System.out.println("\n--- LISTA DE ALUNOS ---");
                                 faculdade.listarAlunos().forEach(aluno ->
                                         System.out.printf(
-                                                "Matrícula: %d | Nome: %-20s | Status: %s%n",
+                                                "Matrícula: %d | Nome: %s | Curso: %s10 | Status: %s%n",
                                                 aluno.getCodigo(),
                                                 aluno.getNome(),
+                                                aluno.getCurso(),
                                                 aluno.getAtivo() ? "Ativo" : "Inativo"
                                         )
                                 );
@@ -186,8 +190,10 @@ public class Main {
                                 String telefone = sc.nextLine();
                                 System.out.println("Informe o e-mail: ");
                                 String email = sc.nextLine();
+                                System.out.println("Informe o curso: ");
+                                String curso = sc.nextLine();
                                 try {
-                                    faculdade.addAluno(new Aluno(nome, telefone, email, faculdade.listarAlunos().size(), true));
+                                    faculdade.addAluno(new Aluno(nome, telefone, email, curso, faculdade.listarAlunos().size(), true));
                                 } catch (DadoInvalidoException e) {
                                     if (nome.isEmpty()) {
                                         throw new DadoInvalidoException("nome");
@@ -201,25 +207,29 @@ public class Main {
                                     }
                                 }
                         }
+                        segundaEscolha = getSegundaEscolha(sc);
                     }
+                    break;
 
                 case 3: //Turma
                     System.out.println("TURMA \n");
                     int segundaEscolhaTurma = getSegundaEscolhaTurma(sc);
 
-                    while (segundaEscolhaTurma != 5) {
+                    while (segundaEscolhaTurma != 8) {
                         switch (segundaEscolhaTurma) {
                             case 1: // Adicionar Turma
                                 try {
                                     sc.nextLine();
                                     System.out.println("Código da disciplina:");
                                     Disciplina disciplina = faculdade.buscarDisciplinaPorCodigo(sc.nextInt());
+                                    sc.nextLine();
 
                                     System.out.println("Código do professor:");
                                     Professor professor = faculdade.buscarProfessorPeloCodigo(sc.nextInt());
 
                                     System.out.println("Quantidade de unidades:");
                                     int unidades = sc.nextInt();
+                                    sc.nextLine();
 
                                     int codigoTurma = faculdade.listarTurmas().size();
 
@@ -342,6 +352,7 @@ public class Main {
                                 break;
                         }
                         int escolhaTurma = getSegundaEscolhaTurma(sc);
+                        sc.nextLine();
                     }
                     break;
 
@@ -425,7 +436,7 @@ public class Main {
         System.out.println(prompt);
         int primeiraEscolha = sc.nextInt();
 
-        if (primeiraEscolha < 0 || primeiraEscolha > 5) {
+        if (primeiraEscolha < 1 || primeiraEscolha > 5) {
             throw new Exception("Escolha inválida");
         }
         return primeiraEscolha;
@@ -442,8 +453,9 @@ public class Main {
                 """;
         System.out.println(promptDois);
         int segundaEscolha = sc.nextInt();
+        sc.nextLine();
 
-        if (segundaEscolha < 0 || segundaEscolha > 5) {
+        if (segundaEscolha < 1 || segundaEscolha > 5) {
             throw new Exception("Escolha inválida");
         }
         return segundaEscolha;
@@ -463,6 +475,7 @@ public class Main {
         """;
         System.out.println(promptTurma);
         int escolha = sc.nextInt();
+        sc.nextLine();
 
         if (escolha < 1 || escolha > 8) {
             throw new Exception("Escolha inválida");
