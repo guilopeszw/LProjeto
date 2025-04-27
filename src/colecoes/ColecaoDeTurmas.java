@@ -6,6 +6,7 @@ import excecoes.TurmaNaoEncontradaException;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -58,5 +59,22 @@ public class ColecaoDeTurmas implements Serializable{
             }
         }
         return turmasFiltradas;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof ColecaoDeTurmas that)) return false;
+        return Objects.equals(colecaoDeTurmas, that.colecaoDeTurmas);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(colecaoDeTurmas);
+    }
+
+    @Override
+    public String toString() {
+        return "'ColecaoDeTurmas{" + colecaoDeTurmas +
+                "'";
     }
 }

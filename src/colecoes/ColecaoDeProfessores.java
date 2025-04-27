@@ -6,6 +6,7 @@ import excecoes.ProfessorNaoEncontradoException;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -48,5 +49,22 @@ public class ColecaoDeProfessores implements Serializable {
                 .filter(p -> p.getCodigo() == codigoProfessor)
                 .findFirst()
                 .orElseThrow(ProfessorNaoEncontradoException::new);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof ColecaoDeProfessores that)) return false;
+        return Objects.equals(colecaoDeProfessores, that.colecaoDeProfessores);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(colecaoDeProfessores);
+    }
+
+    @Override
+    public String toString() {
+        return "'ColecaoDeProfessores{" + colecaoDeProfessores +
+                "'";
     }
 }

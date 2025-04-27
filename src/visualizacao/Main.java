@@ -2,6 +2,7 @@ package visualizacao;
 
 import abstrato.Disciplina;
 import abstrato.Turma;
+import arquivos.Persistencia;
 import entidades.Aluno;
 import entidades.Professor;
 import medias.CalculaMediaIF;
@@ -9,7 +10,6 @@ import medias.MediaComum;
 import medias.MediaUltimaProva;
 import medias.RemoveMenorMedia;
 
-import entidades.Aluno;
 import excecoes.DadoInvalidoException;
 
 import java.util.Scanner;
@@ -17,13 +17,16 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        Faculdade faculdade = new Faculdade();
+        Faculdade faculdade = Persistencia.recuperarSistema("Sistema.dat");
+        if (faculdade == null) {
+            faculdade = new Faculdade();
+        }
 
         System.out.println("Sistema Acadêmico \n");
 
         int primeiraEscolha = getPrimeiraEscolha(sc);
 
-        while (primeiraEscolha < 5) {
+        while (primeiraEscolha <= 5) {
             switch(primeiraEscolha) {
                 case 1:
                     System.out.println("ALUNO \n");
@@ -421,11 +424,16 @@ public class Main {
                                 }
                                 break;
                         }
+
                         segundaEscolhaDisciplina = getSegundaEscolha(sc);
                     }
-
+                case 5:
+                    Persistencia.salvarSistema(faculdade, "Sistema.dat");
+                    System.exit(1);
+                    break;
             }
             primeiraEscolha = getPrimeiraEscolha(sc);
+            sc.nextLine();
         }
     }
 
