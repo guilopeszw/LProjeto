@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Faculdade implements Serializable {
+    private static final long serialVersionUID = 1L;
     ColecaoDeAlunos colecaoDeAlunos = new ColecaoDeAlunos();
     ColecaoDeProfessores colecaoDeProfessores = new ColecaoDeProfessores();
     ColecaoDeTurmas colecaoDeTurmas = new ColecaoDeTurmas();

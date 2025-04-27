@@ -2,8 +2,7 @@ package visualizacao;
 
 import abstrato.Disciplina;
 import abstrato.Turma;
-import arquivos.RecuperarSistema;
-import arquivos.SalvarSistema;
+import arquivos.Persistencia;
 import entidades.Aluno;
 import entidades.Professor;
 import medias.CalculaMediaIF;
@@ -18,12 +17,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        Faculdade faculdade = new Faculdade();
-        if (RecuperarSistema.recuperarSistema("Sistema.dat") != null) {
-            faculdade = RecuperarSistema.recuperarSistema("Sistema.dat");
+        Faculdade faculdade = Persistencia.recuperarSistema("Sistema.dat");
+        if (faculdade == null) {
+            faculdade = new Faculdade();
         }
 
-        System.out.println("SalvarSistema Acadêmico \n");
+        System.out.println("Sistema Acadêmico \n");
 
         int primeiraEscolha = getPrimeiraEscolha(sc);
 
@@ -429,7 +428,7 @@ public class Main {
                         segundaEscolhaDisciplina = getSegundaEscolha(sc);
                     }
                 case 5:
-                    SalvarSistema.salvarSistema(faculdade, "SalvarSistema.dat");
+                    Persistencia.salvarSistema(faculdade, "Sistema.dat");
                     System.exit(1);
                     break;
             }
