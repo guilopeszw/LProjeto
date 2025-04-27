@@ -6,6 +6,7 @@ import excecoes.TurmaCodigoExistenteException;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -48,5 +49,22 @@ public class ColecaoDeAlunos implements Serializable {
                 .filter(a -> a.getCodigo() == codigoAluno)
                 .findFirst()
                 .orElseThrow(AlunoNaoEncontradoException::new);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof ColecaoDeAlunos that)) return false;
+        return Objects.equals(colecaoDeAlunos, that.colecaoDeAlunos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(colecaoDeAlunos);
+    }
+
+    @Override
+    public String toString() {
+        return "'ColecaoDeAlunos{" + colecaoDeAlunos +
+                "'";
     }
 }

@@ -10,9 +10,11 @@ import entidades.Aluno;
 import entidades.Professor;
 import medias.CalculaMediaIF;
 
+import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
-public class Faculdade {
+public class Faculdade implements Serializable {
     ColecaoDeAlunos colecaoDeAlunos = new ColecaoDeAlunos();
     ColecaoDeProfessores colecaoDeProfessores = new ColecaoDeProfessores();
     ColecaoDeTurmas colecaoDeTurmas = new ColecaoDeTurmas();
@@ -105,4 +107,23 @@ public class Faculdade {
         return colecaoDeDisciplinas.buscarDisciplinaPorCodigo(codigo);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Faculdade faculdade)) return false;
+        return Objects.equals(colecaoDeAlunos, faculdade.colecaoDeAlunos) && Objects.equals(colecaoDeProfessores, faculdade.colecaoDeProfessores) && Objects.equals(colecaoDeTurmas, faculdade.colecaoDeTurmas) && Objects.equals(colecaoDeDisciplinas, faculdade.colecaoDeDisciplinas);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(colecaoDeAlunos, colecaoDeProfessores, colecaoDeTurmas, colecaoDeDisciplinas);
+    }
+
+    @Override
+    public String toString() {
+        return "Faculdade{" +
+                "" + colecaoDeAlunos +
+                "" + colecaoDeProfessores +
+                "" + colecaoDeTurmas +
+                "" + colecaoDeDisciplinas;
+    }
 }

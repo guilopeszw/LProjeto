@@ -6,6 +6,7 @@ import excecoes.DisciplinaNaoEncontradaException;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -28,5 +29,22 @@ public class ColecaoDeDisciplinas implements Serializable {
                 .filter(d -> d.getCodigoDisciplina() == codigo)
                 .findFirst()
                 .orElseThrow(DisciplinaNaoEncontradaException::new);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof ColecaoDeDisciplinas that)) return false;
+        return Objects.equals(disciplinas, that.disciplinas);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(disciplinas);
+    }
+
+    @Override
+    public String toString() {
+        return "'ColecaoDeDisciplinas{" + disciplinas +
+                "'";
     }
 }
