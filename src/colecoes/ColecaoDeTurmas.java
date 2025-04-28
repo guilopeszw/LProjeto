@@ -42,7 +42,7 @@ public class ColecaoDeTurmas implements Serializable{
     public Set<Turma> listarTurmas() {
         HashSet<Turma> listaDeTurmas = new HashSet<>();
         for (Turma turma : colecaoDeTurmas) {
-            if (turma.getAtivo()) {
+            if (turma.isAtivo()) {
                 listaDeTurmas.add(turma);
             }
         }

@@ -278,7 +278,7 @@ public class Main {
                                                 t.getCodigo(),
                                                 t.getDisciplina().getNomeDisciplina(),
                                                 t.getProfessor().getNome(),
-                                                t.getAtivo(),
+                                                t.isAtivo(),
                                                 t.getAlunosMatriculados().size()
                                         )
                                 );
@@ -297,7 +297,7 @@ public class Main {
                                             turmaEncontrada.getDisciplina().getNomeDisciplina(),
                                             turmaEncontrada.getProfessor().getNome(),
                                             turmaEncontrada.getAlunosMatriculados().size(),
-                                            turmaEncontrada.getAtivo() ? "Ativa" : "Inativa"
+                                            turmaEncontrada.isAtivo() ? "Ativa" : "Inativa"
                                     );
                                 } catch (Exception e) {
                                     System.out.println("Erro: " + e.getMessage() + "\n");

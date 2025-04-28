@@ -6,7 +6,6 @@ import excecoes.NotasIncompletasException;
 import visualizacao.Faculdade;
 
 import java.io.FileWriter;
-import java.io.IOException;
 
 public class Relatorio {
 
@@ -22,7 +21,7 @@ public class Relatorio {
             StringBuilder relatorio = new StringBuilder();
             // verifica se está ativo
             relatorio.append(String.format("--- RELATÓRIO FINAL DA TURMA %d ---\n", turma.getCodigo()));
-            relatorio.append(String.format("Turma está ativa: %b\n ", turma.getAtivo()));
+            relatorio.append(String.format("Turma está ativa: %b\n ", turma.isAtivo()));
             relatorio.append("\n");
             // recebe o nome
             for (Aluno aluno : turma.getAlunosMatriculados().values()) {

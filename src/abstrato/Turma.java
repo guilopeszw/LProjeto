@@ -115,7 +115,7 @@ public class Turma implements Serializable {
         return quantUnidades;
     }
 
-    public boolean getAtivo() {
+    public boolean isAtivo() {
         return this.ativo;
     }
 
