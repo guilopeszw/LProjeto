@@ -32,7 +32,6 @@ public class ColecaoDeProfessores implements Serializable {
                 .findFirst();
 
         if (professorOptional.isPresent()) {
-            colecaoDeProfessores.remove(professorOptional.get());
             Professor professor = buscarProfessorPeloCodigo(codigoProfessor);
             professor.desligarProfessor();
         } else {
@@ -41,6 +40,12 @@ public class ColecaoDeProfessores implements Serializable {
     }
 
     public Set<Professor> listarProfessores() {
+        Set<Professor> listarProfessores = new HashSet<>();
+        for (Professor professor : colecaoDeProfessores) {
+            if (professor.getAtivo()) {
+                listarProfessores.add(professor);
+            }
+        }
         return colecaoDeProfessores;
     }
 

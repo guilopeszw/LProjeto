@@ -32,7 +32,6 @@ public class ColecaoDeTurmas implements Serializable{
                 .findFirst();
 
         if (turma.isPresent()) {
-            colecaoDeTurmas.remove(turma.get());
             Turma turmaPorCodigo = buscarTurmaPorCodigo(codigoTurma);
             turmaPorCodigo.encerrarTurma();
         } else {
@@ -41,7 +40,13 @@ public class ColecaoDeTurmas implements Serializable{
     }
 
     public Set<Turma> listarTurmas() {
-        return new HashSet<>(colecaoDeTurmas);
+        HashSet<Turma> listaDeTurmas = new HashSet<>();
+        for (Turma turma : colecaoDeTurmas) {
+            if (turma.getAtivo()) {
+                listaDeTurmas.add(turma);
+            }
+        }
+        return listaDeTurmas;
     }
 
     public Turma buscarTurmaPorCodigo(int codigo) {

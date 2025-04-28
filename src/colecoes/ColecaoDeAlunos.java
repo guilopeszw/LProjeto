@@ -32,7 +32,6 @@ public class ColecaoDeAlunos implements Serializable {
                 .findFirst();
 
         if (alunoOptional.isPresent()) {
-            colecaoDeAlunos.remove(alunoOptional.get());
             Aluno aluno = buscaAlunoPeloCodigo(codigoAluno);
             aluno.desligarAluno();
         } else {
@@ -41,7 +40,13 @@ public class ColecaoDeAlunos implements Serializable {
     }
 
     public Set<Aluno> listarAlunos() {
-        return colecaoDeAlunos;
+        Set<Aluno> listarAlunos = new HashSet<>();
+        for (Aluno aluno : colecaoDeAlunos) {
+            if (aluno.getAtivo()) {
+                listarAlunos.add(aluno);
+            }
+        }
+        return listarAlunos;
     }
 
     public Aluno buscaAlunoPeloCodigo(int codigoAluno) {
