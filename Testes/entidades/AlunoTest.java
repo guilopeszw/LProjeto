@@ -24,10 +24,10 @@ class AlunoTest {
     @Test
     void setAtivoDeveAlterarStatusCorretamente() {
         aluno.setAtivo(false);
-        assertFalse(aluno.getAtivo());
+        assertFalse(aluno.isAtivo());
 
         aluno.setAtivo(true);
-        assertTrue(aluno.getAtivo());
+        assertTrue(aluno.isAtivo());
     }
 
     @Test
@@ -37,13 +37,13 @@ class AlunoTest {
 
     @Test
     void getAtivoDeveRetornarStatusInicial() {
-        assertTrue(aluno.getAtivo());
+        assertTrue(aluno.isAtivo());
     }
 
     @Test
     void desligarAlunoDeveMarcarComoInativo() {
         aluno.desligarAluno();
-        assertFalse(aluno.getAtivo());
+        assertFalse(aluno.isAtivo());
     }
 
     @Test
