@@ -66,6 +66,9 @@ public class Turma implements Serializable {
 
         Map<Integer, Double> notas = notasPorAluno.get(matricula);
         Double nota = notas.get(unidade);
+        if (nota == null) {
+            throw new NotasIncompletasException();
+        }
 
         return nota != null ? nota : 0.0;
     }

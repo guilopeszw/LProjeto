@@ -30,12 +30,16 @@ public class Relatorio {
 
                 // recebe as notas de cada unidade
                 for (int unidade = 1; unidade <= unidades; unidade++) {
-                    Double nota = null;
+                    Double nota;
                     nota = turma.getNotaPorUnidade(aluno.getCodigo(), unidade);
                     if (nota == null) {
+                        String faltaNota = "-";
+                        relatorio.append(String.format("  Unidade %d: %.2f\n", unidade, faltaNota));
                         throw new NotasIncompletasException();
                     }
-                    relatorio.append(String.format("  Unidade %d: %.2f\n", unidade, nota));
+                    else {
+                        relatorio.append(String.format("  Unidade %d: %.2f\n", unidade, nota));
+                    }
                     somaNotas += nota;
                 }
 
