@@ -83,8 +83,8 @@ public class Faculdade implements Serializable {
         colecaoDeTurmas.buscarTurmaPorCodigo(codigoTurma).matricularAluno(colecaoDeAlunos.buscaAlunoPeloCodigo(matriculaAluno));
     }
 
-    public void atribuirNotaEmTurma(int codigoTurma, int matricula, int unidade, double nota) {
-        colecaoDeTurmas.buscarTurmaPorCodigo(codigoTurma).atribuirNota(matricula, unidade, nota);
+    public void atribuirNota(int codigoTurma, int matricula, int unidade, double nota) {
+        colecaoDeTurmas.buscarTurmaPorCodigo(codigoTurma).atribuirNota(codigoTurma, matricula, unidade, nota);
     }
 
     public double calcularMediaAlunoEmTurma(int codigoTurma, int matricula, CalculaMediaIF estrategia) {

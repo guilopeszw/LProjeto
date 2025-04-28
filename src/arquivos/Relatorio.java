@@ -2,6 +2,7 @@ package arquivos;
 
 import entidades.Aluno;
 import abstrato.Turma;
+import excecoes.NotasIncompletasException;
 import visualizacao.Faculdade;
 
 import java.io.FileWriter;
@@ -20,19 +21,19 @@ public class Relatorio {
 
             StringBuilder relatorio = new StringBuilder();
             relatorio.append(String.format("--- RELATÓRIO FINAL DA TURMA %d ---\n", turma.getCodigo()));
-
+            // recebe o nome
             for (Aluno aluno : turma.getAlunosMatriculados().values()) {
                 relatorio.append(String.format("Aluno: %s\n", aluno.getNome()));
 
                 double somaNotas = 0;
                 int unidades = turma.getQuantUnidades();
-                boolean faltouNota = false;
 
+                // recebe as notas de cada unidade
                 for (int unidade = 1; unidade <= unidades; unidade++) {
-                    Double nota = turma.getNotaPorUnidade(aluno.getCodigo(), unidade);
+                    Double nota = null;
+                    nota = turma.getNotaPorUnidade(aluno.getCodigo(), unidade);
                     if (nota == null) {
-                        nota = 0.0; // Se não tiver nota, considera 0
-                        faltouNota = true;
+                        throw new NotasIncompletasException();
                     }
                     relatorio.append(String.format("  Unidade %d: %.2f\n", unidade, nota));
                     somaNotas += nota;
@@ -52,7 +53,6 @@ public class Relatorio {
                 writer.write(relatorio.toString());
                 System.out.println("Relatório salvo em " + caminhoArquivo);
             }
-
         } catch (Exception e) {
             System.out.println("Erro ao gerar relatório: " + e.getMessage());
             e.printStackTrace();

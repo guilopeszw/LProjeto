@@ -312,7 +312,7 @@ public class Main {
                                     System.out.println("Código da turma:");
                                     int codTurma = sc.nextInt();
 
-                                    System.out.println("Matrícula da turma:");
+                                    System.out.println("Matrícula do aluno:");
                                     int matricula = sc.nextInt();
 
                                     System.out.println("Unidade:");
@@ -321,7 +321,7 @@ public class Main {
                                     System.out.println("Nota:");
                                     double nota = sc.nextDouble();
 
-                                    faculdade.atribuirNotaEmTurma(codTurma, matricula, unidade, nota);
+                                    faculdade.atribuirNota(codTurma, matricula, unidade, nota);
                                     System.out.println("Nota atribuída com sucesso!\n");
                                 } catch (Exception e) {
                                     System.out.println("Erro: " + e.getMessage() + "\n");
@@ -333,7 +333,7 @@ public class Main {
                                 try {
                                     System.out.println("Código da turma:");
                                     int codTurma = sc.nextInt();
-                                    System.out.println("Estratégia (1-Comum, 2-Remove Menor, 3-Última Prova):");
+                                    System.out.println("Estratégia (1 - Comum | 2 - Remove Menor | 3 - Última Prova):");
                                     CalculaMediaIF estrategia = switch(sc.nextInt()) {
                                         case 1 -> new MediaComum();
                                         case 2 -> new RemoveMenorMedia();
@@ -341,7 +341,7 @@ public class Main {
                                         default -> throw new Exception("Estratégia inválida!");
                                     };
 
-                                    System.out.println("Matrícula (0 para média geral):");
+                                    System.out.println("Matrícula (digite 0 para média geral):");
                                     int matricula = sc.nextInt();
 
                                     double media = (matricula == 0)
@@ -359,7 +359,7 @@ public class Main {
                                 try {
                                     System.out.println("Código da turma:");
                                     int codTurma = sc.nextInt();
-                                    String caminho = "relatorioTturma" + codTurma + ".txt";
+                                    String caminho = "relatorioTurma" + codTurma + ".txt";
 
                                     Relatorio.gerarRelatorioFinalTurma(faculdade, codTurma, caminho);
                                 } catch (Exception e) {
@@ -374,10 +374,10 @@ public class Main {
 
                 case 4: // Disciplina
                     System.out.println("DISCIPLINA \n");
-                    int segundaEscolhaDisciplina = getSegundaEscolha(sc);
+                    segundaEscolha = getSegundaEscolha(sc);
 
-                    while (segundaEscolhaDisciplina != 5) {
-                        switch (segundaEscolhaDisciplina) {
+                    while (segundaEscolha < 5) {
+                        switch (segundaEscolha) {
                             case 1: // Adicionar Disciplina
                                 try {
                                     sc.nextLine();
@@ -438,8 +438,7 @@ public class Main {
                                 }
                                 break;
                         }
-
-                        segundaEscolhaDisciplina = getSegundaEscolha(sc);
+                        segundaEscolha = getSegundaEscolha(sc);
                     }
                 case 5:
                     Persistencia.salvarSistema(faculdade, "Sistema.dat");

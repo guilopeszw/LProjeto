@@ -37,7 +37,7 @@ public class Turma implements Serializable {
         notasPorAluno.put(matricula, new HashMap<>());
     }
 
-    public void atribuirNota(int matricula, int unidade, double nota) {
+    public void atribuirNota(int codigoTurma, int matricula, int unidade, double nota) {
         validarUnidade(unidade);
         validarNota(nota);
         notasPorAluno.computeIfAbsent(matricula, k -> new HashMap<>()).put(unidade, nota);
