@@ -54,7 +54,7 @@ class ColecaoDeAlunosTest {
         colecao.removeAluno(1001);
 
         Aluno alunoRemovido = colecao.buscaAlunoPeloCodigo(1001);
-        assertFalse(alunoRemovido.getAtivo());
+        assertFalse(alunoRemovido.isAtivo());
     }
 
     @Test
@@ -79,6 +79,6 @@ class ColecaoDeAlunosTest {
         colecao.removeAluno(1001);
 
         assertDoesNotThrow(() -> colecao.buscaAlunoPeloCodigo(1001));
-        assertFalse(colecao.buscaAlunoPeloCodigo(1001).getAtivo());
+        assertFalse(colecao.buscaAlunoPeloCodigo(1001).isAtivo());
     }
 }
