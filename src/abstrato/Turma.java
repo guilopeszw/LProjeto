@@ -106,6 +106,10 @@ public class Turma implements Serializable {
         return codigo;
     }
 
+    public int getQuantUnidades() {
+        return quantUnidades;
+    }
+
     public boolean getAtivo() {
         return ativo;
     }

@@ -3,6 +3,7 @@ package visualizacao;
 import abstrato.Disciplina;
 import abstrato.Turma;
 import arquivos.Persistencia;
+import arquivos.Relatorio;
 import entidades.Aluno;
 import entidades.Professor;
 import medias.CalculaMediaIF;
@@ -353,6 +354,19 @@ public class Main {
                                     sc.nextLine();
                                 }
                                 break;
+
+                            case 8: // Gerar Relatório Final
+                                try {
+                                    System.out.println("Código da turma:");
+                                    int codTurma = sc.nextInt();
+                                    String caminho = "relatorioTturma" + codTurma + ".txt";
+
+                                    Relatorio.gerarRelatorioFinalTurma(faculdade, codTurma, caminho);
+                                } catch (Exception e) {
+                                    System.out.println("Erro: " + e.getMessage() + "\n");
+                                    sc.nextLine();
+                                }
+                                break;
                         }
                         segundaEscolhaTurma = getSegundaEscolhaTurma(sc);
                     }
@@ -469,20 +483,20 @@ public class Main {
 
     private static int getSegundaEscolhaTurma(Scanner sc) throws Exception {
         String promptTurma = """
-        1. Adicionar Turma;\s
-        2. Remover Turma;\s
-        3. Listar Turmas;\s
-        4. Buscar Turma;\s
-        5. Matricular Aluno;\s
-        6. Atribuir Nota;\s
-        7. Calcular Média;\s
-        8. Voltar\s
-        Insira a operação:\s
-        """;
-        System.out.println(promptTurma);
+    1. Adicionar Turma;
+    2. Remover Turma;
+    3. Listar Turmas;
+    4. Buscar Turma;
+    5. Matricular Aluno;
+    6. Atribuir Nota;
+    7. Calcular Média;
+    8. Gerar Relatório Final;
+    9. Voltar
+    Insira a operação:
+    """;
         int escolha = sc.nextInt();
 
-        if (escolha < 1 || escolha > 8) {
+        if (escolha < 1 || escolha > 9) {
             throw new Exception("Escolha inválida");
         }
         return escolha;
