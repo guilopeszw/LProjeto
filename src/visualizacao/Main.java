@@ -219,7 +219,7 @@ public class Main {
                     System.out.println("TURMA \n");
                     int segundaEscolhaTurma = getSegundaEscolhaTurma(sc);
 
-                    while (segundaEscolhaTurma < 8) {
+                    while (segundaEscolhaTurma < 9) {
                         switch (segundaEscolhaTurma) {
                             case 1: // Adicionar Turma
                                 try {
@@ -494,6 +494,7 @@ public class Main {
     9. Voltar
     Insira a operação:
     """;
+        System.out.println(promptTurma);
         int escolha = sc.nextInt();
 
         if (escolha < 1 || escolha > 9) {
