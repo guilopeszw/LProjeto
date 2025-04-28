@@ -6,6 +6,7 @@ import arquivos.Persistencia;
 import arquivos.Relatorio;
 import entidades.Aluno;
 import entidades.Professor;
+import excecoes.TurmaSemAlunosException;
 import medias.CalculaMediaIF;
 import medias.MediaComum;
 import medias.MediaUltimaProva;
@@ -219,7 +220,7 @@ public class Main {
                     System.out.println("TURMA \n");
                     int segundaEscolhaTurma = getSegundaEscolhaTurma(sc);
 
-                    while (segundaEscolhaTurma < 9) {
+                    while (segundaEscolhaTurma < 10) {
                         switch (segundaEscolhaTurma) {
                             case 1: // Adicionar Turma
                                 try {
@@ -367,6 +368,18 @@ public class Main {
                                     sc.nextLine();
                                 }
                                 break;
+                            case 9:
+                                System.out.println("Código da turma:");
+                                int codTurma = sc.nextInt();
+
+                                if(faculdade.buscarTurmaPorCodigo(codTurma).getAlunosMatriculados() != null) {
+                                    System.out.println("Relatório: \n");
+                                    System.out.println(faculdade.buscarTurmaPorCodigo(codTurma).getAlunosMatriculados());
+                                }
+                                else {
+                                    throw new TurmaSemAlunosException();
+                                }
+                                break;
                         }
                         segundaEscolhaTurma = getSegundaEscolhaTurma(sc);
                     }
@@ -440,6 +453,7 @@ public class Main {
                         }
                         segundaEscolha = getSegundaEscolha(sc);
                     }
+                    break;
                 case 5:
                     Persistencia.salvarSistema(faculdade, "Sistema.dat");
                     System.exit(1);
@@ -490,13 +504,14 @@ public class Main {
     6. Atribuir Nota;
     7. Calcular Média;
     8. Gerar Relatório Final;
-    9. Voltar
+    9. Listar alunos de uma turma;
+    10. Voltar
     Insira a operação:
     """;
         System.out.println(promptTurma);
         int escolha = sc.nextInt();
 
-        if (escolha < 1 || escolha > 9) {
+        if (escolha < 1 || escolha > 10) {
             throw new Exception("Escolha inválida");
         }
         return escolha;

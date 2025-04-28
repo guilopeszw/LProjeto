@@ -11,6 +11,7 @@ import entidades.Professor;
 import medias.CalculaMediaIF;
 
 import java.io.Serializable;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -93,6 +94,10 @@ public class Faculdade implements Serializable {
 
     public double calcularMediaGeralDaTurma(int codigoTurma, CalculaMediaIF estrategia) {
         return colecaoDeTurmas.buscarTurmaPorCodigo(codigoTurma).calcularMediaGeral(estrategia);
+    }
+
+    public Map<Integer, Aluno> getAlunosMatriculados(int codigoTurma) {
+        return colecaoDeTurmas.buscarTurmaPorCodigo(codigoTurma).getAlunosMatriculados();
     }
 
     // Disciplina:
