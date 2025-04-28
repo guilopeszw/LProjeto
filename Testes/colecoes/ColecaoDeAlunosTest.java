@@ -37,19 +37,19 @@ class ColecaoDeAlunosTest {
     }
 
     @Test
-    void addAluno_DeveAdicionarAlunoComSucesso() {
+    void addAlunoDeveAdicionarAlunoComSucesso() {
         colecao.addAluno(aluno1);
         assertDoesNotThrow(() -> colecao.buscaAlunoPeloCodigo(1001));
     }
 
     @Test
-    void addAluno_DeveLancarExcecaoParaMatriculaDuplicada() {
+    void addAlunoDeveLancarExcecaoParaMatriculaDuplicada() {
         colecao.addAluno(aluno1);
         assertThrows(TurmaCodigoExistenteException.class, () -> colecao.addAluno(aluno1));
     }
 
     @Test
-    void removeAluno_DeveMarcarAlunoComoInativo() {
+    void removeAlunoDeveMarcarAlunoComoInativo() {
         colecao.addAluno(aluno1);
         colecao.removeAluno(1001);
 
@@ -58,12 +58,12 @@ class ColecaoDeAlunosTest {
     }
 
     @Test
-    void removeAluno_DeveLancarExcecaoParaMatriculaInexistente() {
+    void removeAlunoDeveLancarExcecaoParaMatriculaInexistente() {
         assertThrows(AlunoNaoEncontradoException.class, () -> colecao.removeAluno(9999));
     }
 
     @Test
-    void listarAlunos_DeveRetornarApenasAtivos() {
+    void listarAlunosDeveRetornarApenasAtivos() {
         colecao.addAluno(aluno1);
         colecao.addAluno(aluno2);
         colecao.removeAluno(1001);

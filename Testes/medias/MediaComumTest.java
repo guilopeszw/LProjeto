@@ -16,7 +16,7 @@ class MediaComumTest {
     }
 
     @Test
-    void calculaMedia_DeveLancarExcecaoQuandoSemNotas() {
+    void calculaMediaDeveLancarExcecaoQuandoSemNotas() {
         Map<Integer, Double> notas = new HashMap<>();
         assertThrows(SemNotaException.class, () ->
                 mediaComum.calculaMedia(notas, 3)
@@ -24,7 +24,7 @@ class MediaComumTest {
     }
 
     @Test
-    void calculaMedia_DeveRetornarMediaCorretaComUmaNota() {
+    void calculaMediaDeveRetornarMediaCorretaComUmaNota() {
         Map<Integer, Double> notas = new HashMap<>();
         notas.put(1, 8.5);
 
@@ -33,18 +33,18 @@ class MediaComumTest {
     }
 
     @Test
-    void calculaMedia_DeveIgnorarQuantUnidades() {
+    void calculaMediaDeveIgnorarQuantUnidades() {
         Map<Integer, Double> notas = new HashMap<>();
         notas.put(1, 7.0);
         notas.put(2, 8.0);
 
-        // quantUnidades = 5 (não afeta o cálculo)
+
         double media = mediaComum.calculaMedia(notas, 5);
         assertEquals(7.5, media, 0.001);
     }
 
     @Test
-    void calculaMedia_DeveCalcularCorretamenteComNotasZeradas() {
+    void calculaMediaDeveCalcularCorretamenteComNotasZeradas() {
         Map<Integer, Double> notas = new HashMap<>();
         notas.put(1, 0.0);
         notas.put(2, 0.0);
@@ -54,7 +54,7 @@ class MediaComumTest {
     }
 
     @Test
-    void calculaMedia_DeveCalcularMediaComNotasDecimais() {
+    void calculaMediaDeveCalcularMediaComNotasDecimais() {
         Map<Integer, Double> notas = new HashMap<>();
         notas.put(1, 6.5);
         notas.put(2, 7.5);

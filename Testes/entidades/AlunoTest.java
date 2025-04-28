@@ -22,7 +22,7 @@ class AlunoTest {
     }
 
     @Test
-    void setAtivo_DeveAlterarStatusCorretamente() {
+    void setAtivoDeveAlterarStatusCorretamente() {
         aluno.setAtivo(false);
         assertFalse(aluno.getAtivo());
 
@@ -31,23 +31,23 @@ class AlunoTest {
     }
 
     @Test
-    void getCurso_DeveRetornarCursoCorreto() {
+    void getCursoDeveRetornarCursoCorreto() {
         assertEquals("Ciência da Computação", aluno.getCurso());
     }
 
     @Test
-    void getAtivo_DeveRetornarStatusInicial() {
+    void getAtivoDeveRetornarStatusInicial() {
         assertTrue(aluno.getAtivo());
     }
 
     @Test
-    void desligarAluno_DeveMarcarComoInativo() {
+    void desligarAlunoDeveMarcarComoInativo() {
         aluno.desligarAluno();
         assertFalse(aluno.getAtivo());
     }
 
     @Test
-    void equals_DeveConsiderarCurso() {
+    void equalsDeveConsiderarCurso() {
         Aluno outroAluno = new Aluno(
                 "João Silva",
                 "1199999-9999",
