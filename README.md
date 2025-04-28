@@ -1,3 +1,3 @@
 ## Diagrama de Classes
 
-[📄 Visualizar Diagrama de Classes (PDF)](diagrama.png)
+[📄 Visualizar Diagrama de Classes (PDF)](diagramaDeClassesProjeto.png)
