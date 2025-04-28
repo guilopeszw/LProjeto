@@ -34,7 +34,7 @@ public abstract class Pessoa implements Serializable {
         return codigo;
     }
 
-    public boolean getAtivo() {
+    public boolean isAtivo() {
         return ativo;
     }
 

@@ -42,7 +42,7 @@ public class ColecaoDeAlunos implements Serializable {
     public Set<Aluno> listarAlunos() {
         Set<Aluno> listarAlunos = new HashSet<>();
         for (Aluno aluno : colecaoDeAlunos) {
-            if (aluno.getAtivo()) {
+            if (aluno.isAtivo()) {
                 listarAlunos.add(aluno);
             }
         }

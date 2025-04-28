@@ -73,7 +73,7 @@ public class Main {
                                     System.out.println("Erro: " + e.getMessage() + "\n");
                                     sc.nextLine();
                                 }
-                                if (!faculdade.buscaAlunoPeloCodigo(codigoRemover).getAtivo()) {
+                                if (!faculdade.buscaAlunoPeloCodigo(codigoRemover).isAtivo()) {
 
                                 }
                                 break;
@@ -86,7 +86,7 @@ public class Main {
                                                 aluno.getCodigo(),
                                                 aluno.getNome(),
                                                 aluno.getCurso(),
-                                                aluno.getAtivo() ? "Ativo" : "Inativo"
+                                                aluno.isAtivo() ? "Ativo" : "Inativo"
                                         )
                                 );
                                 System.out.println("-----------------------\n");
@@ -102,7 +102,7 @@ public class Main {
                                             alunoEncontrado.getCodigo(),
                                             alunoEncontrado.getNome(),
                                             alunoEncontrado.getEmail(),
-                                            alunoEncontrado.getAtivo() ? "Ativo" : "Inativo"
+                                            alunoEncontrado.isAtivo() ? "Ativo" : "Inativo"
                                     );
                                 } catch (Exception e) {
                                     System.out.println("Erro: " + e.getMessage() + "\n");
@@ -166,7 +166,7 @@ public class Main {
                                             "Matrícula: %d | Nome: %-20s | Status: %s%n",
                                             professor.getCodigo(),
                                             professor.getNome(),
-                                            professor.getAtivo() ? "Ativo" : "Inativo"
+                                            professor.isAtivo() ? "Ativo" : "Inativo"
                                             )
                                 );
                                 System.out.println("-----------------------\n");
@@ -181,7 +181,7 @@ public class Main {
                                             professorEncontrado.getCodigo(),
                                             professorEncontrado.getNome(),
                                             professorEncontrado.getEmail(),
-                                            professorEncontrado.getAtivo() ? "Ativo" : "Inativo"
+                                            professorEncontrado.isAtivo() ? "Ativo" : "Inativo"
                                     );
                                 } catch (Exception e) {
                                     System.out.println("Erro: " + e.getMessage() + "\n");

@@ -20,7 +20,7 @@ public class Aluno extends Pessoa implements Serializable {
         return curso;
     }
 
-    public boolean getAtivo() {
+    public boolean isAtivo() {
         return ativo;
     }
 

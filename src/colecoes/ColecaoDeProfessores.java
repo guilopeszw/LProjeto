@@ -42,7 +42,7 @@ public class ColecaoDeProfessores implements Serializable {
     public Set<Professor> listarProfessores() {
         Set<Professor> listarProfessores = new HashSet<>();
         for (Professor professor : colecaoDeProfessores) {
-            if (professor.getAtivo()) {
+            if (professor.isAtivo()) {
                 listarProfessores.add(professor);
             }
         }
