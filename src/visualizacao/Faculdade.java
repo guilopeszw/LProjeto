@@ -92,7 +92,7 @@ public class Faculdade implements Serializable {
         return colecaoDeTurmas.buscarTurmaPorCodigo(codigoTurma).calcularMediaAluno(matricula, estrategia);
     }
 
-    public double calcularMediaGeralDaTurma(int codigoTurma, CalculaMediaIF estrategia) {
+    public double calcularMediaGeral(int codigoTurma, CalculaMediaIF estrategia) {
         return colecaoDeTurmas.buscarTurmaPorCodigo(codigoTurma).calcularMediaGeral(estrategia);
     }
 

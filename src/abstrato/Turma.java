@@ -17,8 +17,9 @@ public class Turma implements Serializable {
     private int quantUnidades;
     private int codigo;
     private Boolean ativo;
+    private CalculaMediaIF estrategia;
 
-    public Turma(Disciplina disciplina, Professor professor, int quantUnidades, int codigo) {
+    public Turma(Disciplina disciplina, Professor professor, int quantUnidades, int codigo, CalculaMediaIF estrategia) {
         this.disciplina = disciplina;
         this.professor = professor; // Campo professor corrigido
         this.quantUnidades = quantUnidades;
@@ -26,6 +27,7 @@ public class Turma implements Serializable {
         this.ativo = true;
         this.alunosMatriculados = new HashMap<>();
         this.notasPorAluno = new HashMap<>();
+        this.estrategia = estrategia;
     }
 
     public void matricularAluno(Aluno aluno) {
@@ -114,11 +116,14 @@ public class Turma implements Serializable {
     }
 
     public boolean getAtivo() {
-        return ativo;
+        return this.ativo;
     }
 
     public void encerrarTurma() {
         this.ativo = false;
     }
 
+    public CalculaMediaIF getEstrategia() {
+        return estrategia;
+    }
 }

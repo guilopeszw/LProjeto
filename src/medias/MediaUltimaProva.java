@@ -2,12 +2,16 @@ package medias;
 
 import excecoes.SemUltimaNotaException;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class MediaUltimaProva implements CalculaMediaIF {
+public class MediaUltimaProva implements CalculaMediaIF, Serializable {
 
     @Override
     public double calculaMedia(Map<Integer, Double> notas, int quantUnidades) {
+        if (notas.size() == 1) {
+            return notas.values().iterator().next();
+        }
         if (!notas.containsKey(quantUnidades)) throw new SemUltimaNotaException();
         double ultima = notas.get(quantUnidades);
         double mediaRestante = notas.entrySet().stream()

@@ -2,10 +2,11 @@ package medias;
 
 import excecoes.SemNotaException;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Map;
 
-public class RemoveMenorMedia implements CalculaMediaIF {
+public class RemoveMenorMedia implements CalculaMediaIF, Serializable {
 
     @Override
     public double calculaMedia(Map<Integer, Double> notas, int quantUnidades) {

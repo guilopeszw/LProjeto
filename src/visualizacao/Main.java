@@ -51,7 +51,7 @@ public class Main {
                                     System.out.println("Curso:");
                                     String curso = sc.nextLine();
 
-                                    int matricula = faculdade.listarAlunos().size();
+                                    int matricula = faculdade.listarAlunos().size() + 1;
 
                                     Aluno novoAluno = new Aluno(nome, telefone, email, curso, matricula, true);
 
@@ -64,14 +64,17 @@ public class Main {
                                 break;
 
                             case 2: // Remover Aluno
+                                System.out.println("Código de matrícula para remover:");
+                                int codigoRemover = sc.nextInt();
                                 try {
-                                    System.out.println("Código de matrícula para remover:");
-                                    int codigoRemover = sc.nextInt();
                                     faculdade.removeAluno(codigoRemover);
                                     System.out.println("Aluno removido com sucesso!\n");
                                 } catch (Exception e) {
                                     System.out.println("Erro: " + e.getMessage() + "\n");
                                     sc.nextLine();
+                                }
+                                if (!faculdade.buscaAlunoPeloCodigo(codigoRemover).getAtivo()) {
+
                                 }
                                 break;
 
@@ -236,9 +239,18 @@ public class Main {
                                     int unidades = sc.nextInt();
                                     sc.nextLine();
 
+                                    System.out.println("Qual será a estratégia para cálculo de médias da turma: ");
+                                    System.out.println("Estratégia (1 - Comum | 2 - Remove Menor | 3 - Última Prova):");
+                                    CalculaMediaIF estrategia = switch(sc.nextInt()) {
+                                        case 1 -> new MediaComum();
+                                        case 2 -> new RemoveMenorMedia();
+                                        case 3 -> new MediaUltimaProva();
+                                        default -> throw new Exception("Estratégia inválida!");
+                                    };
+
                                     int codigoTurma = faculdade.listarTurmas().size();
 
-                                    Turma novaTurma = new Turma(disciplina, professor, unidades, codigoTurma);
+                                    Turma novaTurma = new Turma(disciplina, professor, unidades, codigoTurma, estrategia);
                                     faculdade.adicionarTurma(novaTurma);
                                     System.out.println("Turma criada!\n");
                                 } catch (Exception e) {
@@ -262,10 +274,11 @@ public class Main {
                                 System.out.println("\n--- LISTA DE TURMAS ---");
                                 faculdade.listarTurmas().forEach(t ->
                                         System.out.printf(
-                                                "Código: %d | Disciplina: %-15s | Professor: %-20s | Alunos: %d%n",
+                                                "Código: %d | Disciplina: %-15s | Professor: %s | Ativo: %s%n | Alunos: %d%n",
                                                 t.getCodigo(),
                                                 t.getDisciplina().getNomeDisciplina(),
                                                 t.getProfessor().getNome(),
+                                                t.getAtivo(),
                                                 t.getAlunosMatriculados().size()
                                         )
                                 );
@@ -334,20 +347,13 @@ public class Main {
                                 try {
                                     System.out.println("Código da turma:");
                                     int codTurma = sc.nextInt();
-                                    System.out.println("Estratégia (1 - Comum | 2 - Remove Menor | 3 - Última Prova):");
-                                    CalculaMediaIF estrategia = switch(sc.nextInt()) {
-                                        case 1 -> new MediaComum();
-                                        case 2 -> new RemoveMenorMedia();
-                                        case 3 -> new MediaUltimaProva();
-                                        default -> throw new Exception("Estratégia inválida!");
-                                    };
 
                                     System.out.println("Matrícula (digite 0 para média geral):");
                                     int matricula = sc.nextInt();
 
                                     double media = (matricula == 0)
-                                            ? faculdade.calcularMediaGeralDaTurma(codTurma, estrategia)
-                                            : faculdade.calcularMediaAlunoEmTurma(codTurma, matricula, estrategia);
+                                            ? faculdade.calcularMediaGeral(codTurma, faculdade.buscarTurmaPorCodigo(codTurma).getEstrategia())
+                                            : faculdade.calcularMediaAlunoEmTurma(codTurma, matricula, faculdade.buscarTurmaPorCodigo(codTurma).getEstrategia());
 
                                     System.out.printf("Média: %.2f%n%n", media);
                                 } catch (Exception e) {
@@ -368,7 +374,8 @@ public class Main {
                                     sc.nextLine();
                                 }
                                 break;
-                            case 9:
+
+                            case 9: // listar alunos de uma turma
                                 System.out.println("Código da turma:");
                                 int codTurma = sc.nextInt();
 

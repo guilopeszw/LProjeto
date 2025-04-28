@@ -20,7 +20,10 @@ public class Relatorio {
             }
 
             StringBuilder relatorio = new StringBuilder();
+            // verifica se está ativo
             relatorio.append(String.format("--- RELATÓRIO FINAL DA TURMA %d ---\n", turma.getCodigo()));
+            relatorio.append(String.format("Turma está ativa: %b\n ", turma.getAtivo()));
+            relatorio.append("\n");
             // recebe o nome
             for (Aluno aluno : turma.getAlunosMatriculados().values()) {
                 relatorio.append(String.format("Aluno: %s\n", aluno.getNome()));
@@ -43,14 +46,15 @@ public class Relatorio {
                     somaNotas += nota;
                 }
 
-                double mediaFinal = somaNotas / unidades;
+                double mediaFinal = turma.calcularMediaAluno(aluno.getCodigo(), turma.getEstrategia());
                 String resultado = mediaFinal >= 7.0 ? "APROVADO" : "REPROVADO";
 
                 relatorio.append(String.format("  Média Final: %.2f\n", mediaFinal));
                 relatorio.append(String.format("  Resultado: %s\n\n", resultado));
             }
 
-            System.out.println(relatorio.toString()); // Imprime na tela
+
+            System.out.println(relatorio); // Imprime na tela
 
             // Salvar no arquivo TXT
             try (FileWriter writer = new FileWriter(caminhoArquivo)) {
