@@ -14,6 +14,9 @@ Guilherme Lopes, Samuel Santos e Gilberto Dias
 - Geração de relatórios de turma (Alunos aprovados, reprovados e suas respectivas notas e média final);
 - Cálculo de média da turma toda (com base na estratégia de média adotada para a turma);
 
+## Observações
+- Ao iniciar o programa pela primeira vez, é necessário fechá-lo para poder armazenar os dados e não receber o erro inicial (será criado um arquivo chamado Sistema.dat)
+
 ## Diagrama de Classes
 
 [📄 Visualizar Diagrama de Classes (PDF)](diagramaDeClassesProjeto.png)
